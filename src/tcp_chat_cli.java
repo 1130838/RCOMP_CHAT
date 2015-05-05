@@ -7,12 +7,12 @@ class tcp_chat_cli {
     static InetAddress IPdestino;
     static Socket sock;
 
-
     public static void main(String args[]) throws Exception {
 
-        int test2=10;
+        int test2 = 10;
         String nick, frase;
         byte[] data = new byte[300];
+
 
         if (args.length != 1) {
             System.out.println("Deve indicar o servidor na linha de comando");
@@ -20,6 +20,7 @@ class tcp_chat_cli {
         }
 
         try {
+
             IPdestino = InetAddress.getByName(args[0]);
 
         } catch (UnknownHostException ex) {
@@ -44,8 +45,8 @@ class tcp_chat_cli {
         serverConn.start();
 
 
-        Thread serverConn2 = new Thread(new tcp_chat_cli_con(sock, test2));
-        serverConn2.start();
+       /* Thread serverConn2 = new Thread(new tcp_chat_cli_con(sock, test2));
+        serverConn2.start();*/
 
         while (true) {
             frase = in.readLine();
@@ -63,6 +64,10 @@ class tcp_chat_cli {
 
         serverConn.join();
         sock.close();
+    }
+
+    private static String getServerAdress() {
+        return null;
     }
 }
 
